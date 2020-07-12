@@ -528,6 +528,9 @@ to preserve the formatting in a displayed table, for example."
   :group 'org-drill
   :type 'boolean)
 
+(defvar org-drill-display-card-hook nil
+  "Hook called when `org-drill' cards are displayed.")
+
 (defvar org-drill-display-answer-hook nil
   "Hook called when `org-drill' answers are displayed.")
 
@@ -2032,6 +2035,7 @@ Note: does not actually alter the item."
      (ignore-errors
        (org-display-inline-images t))
      (org-cycle-hide-drawers 'all)
+     (run-hooks 'org-drill-display-card-hook)
      (prog1 (org-drill-presentation-prompt session)
        (org-drill-hide-subheadings-if 'org-drill-entry-p))))))
 
@@ -2073,6 +2077,7 @@ RESCHEDULE-FN is the function to reschedule."
      (ignore-errors
        (org-display-inline-images t))
      (org-cycle-hide-drawers 'all)
+     (run-hooks 'org-drill-display-card-hook)
      (prog1 (org-drill-presentation-prompt-for-string session nil)
        (org-drill-hide-subheadings-if 'org-drill-entry-p))))))
 
@@ -2095,6 +2100,7 @@ RESCHEDULE-FN is the function to reschedule."
        (ignore-errors
          (org-display-inline-images t))
        (org-cycle-hide-drawers 'all)
+       (run-hooks 'org-drill-display-card-hook)
        (prog1 (org-drill-presentation-prompt session)
          (org-drill-hide-subheadings-if 'org-drill-entry-p)))))))
 
@@ -2111,6 +2117,7 @@ RESCHEDULE-FN is the function to reschedule."
        (ignore-errors
          (org-display-inline-images t))
        (org-cycle-hide-drawers 'all)
+       (run-hooks 'org-drill-display-card-hook)
        (prog1 (org-drill-presentation-prompt session)
          (org-drill-hide-subheadings-if 'org-drill-entry-p)))))))
 
@@ -2194,6 +2201,7 @@ items if FORCE-SHOW-FIRST or FORCE-SHOW-LAST is non-nil)."
       (ignore-errors
         (org-display-inline-images t))
       (org-cycle-hide-drawers 'all)
+      (run-hooks 'org-drill-display-card-hook)
       (prog1 (org-drill-presentation-prompt session)
         (org-drill-hide-subheadings-if 'org-drill-entry-p)
         (org-drill-unhide-clozed-text))))))
@@ -2247,6 +2255,7 @@ the second to last, etc."
       (ignore-errors
         (org-display-inline-images t))
       (org-cycle-hide-drawers 'all)
+      (run-hooks 'org-drill-display-card-hook)
       (prog1 (org-drill-presentation-prompt session)
         (org-drill-hide-subheadings-if 'org-drill-entry-p)
         (org-drill-unhide-clozed-text))))))
@@ -2369,6 +2378,7 @@ If ANSWER is supplied, set the session slot `drill-answer' to its value."
     (org-cycle-hide-drawers 'all)
     (ignore-errors
       (org-display-inline-images t))
+    (run-hooks 'org-drill-display-card-hook)
     (prog1 (org-drill-presentation-prompt session)
       (org-drill-hide-subheadings-if 'org-drill-entry-p)))))
 
