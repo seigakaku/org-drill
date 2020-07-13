@@ -528,6 +528,20 @@ to preserve the formatting in a displayed table, for example."
   :group 'org-drill
   :type 'boolean)
 
+(defcustom org-drill-response-window-height nil
+  "Height of `org-drill' response window.
+The value can be one of the following:
+- `nil' means to leave the height of the window alone.
+
+- An integer number specifies the desired total height in lines.
+
+- A floating-point number specifies the desired fraction of the
+  frame."
+  :group 'org-drill
+  :type '(choice (const :tag "Don't adjust height" nil)
+                 (integer :tag "Desired height in lines")
+                 (float :tag "Desired fraction of frame")))
+
 (defvar org-drill-display-answer-hook nil
   "Hook called when `org-drill' answers are displayed.")
 
@@ -1760,7 +1774,7 @@ Consider reformulating the item to make it easier to remember.\n"
       (let ((buf
              (org-drill-response-get-buffer-create)))
         (select-window
-         (display-buffer-below-selected buf nil))
+         (display-buffer-below-selected buf `((window-height . ,org-drill-response-window-height))))
         ;; Store the current session in a variable, so that it can
         ;; be picked up by the when we leave the buffer
         (setq-local org-drill-current-session session)
