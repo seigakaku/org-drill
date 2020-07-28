@@ -1041,3 +1041,8 @@ to test all of its functionality automatically, so I expect
 breakages. In addition, some of the interfaces for card types has
 changed, and some functionality which is unmaintainable is being
 removed! Please be patient and report problems!
+
+The source for the CC0 (Creative Commons Zero) licensed apple.png
+image is
+
+https://purepng.com/photo/13961/food-red-apple
