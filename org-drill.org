@@ -846,7 +846,7 @@ exact place in a document, so you can read it /incrementally/ rather than all
 at once. There is a large variety of bookmarking packages for emacs which
 provide advanced bookmarking functionality: see the [[http://www.emacswiki.org/emacs/BookMarks][Emacs Wiki]] for details.
 Bookmarking exact webpage locations in an external browser seems to be a bit
-more difficult. For Firefox, the [[http://www.wired-marker.org/][Wired Marker]] addon works well.
+more difficult. For Firefox, the [[http://www.wired-marker.org/][Wired Marker]] addon works well.  For Chromium-based browsers, see [[https://www.lifehacker.com.au/2020/06/how-to-create-a-bookmark-that-jumps-to-specific-text-on-a-website/][here]]. (It might also work with newer versions of Firefox.)
 
 An example of using Org-Drill for incremental reading is given below. First,
 and most importantly, we need to define a couple of =org-capture= templates for
