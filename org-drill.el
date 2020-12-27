@@ -531,6 +531,9 @@ to preserve the formatting in a displayed table, for example."
 (defvar org-drill-display-answer-hook nil
   "Hook called when `org-drill' answers are displayed.")
 
+(defvar org-drill-session-complete-hook nil
+  "Hook called when `org-drill' session is complete.")
+
 (defclass org-drill-session ()
   ((qualities :initform nil)
    (start-time
@@ -2663,6 +2666,8 @@ Session finished. Press a key to continue..."
       (message "%s" prompt)
       (sit-for 0.5))
     (read-char-exclusive)
+
+    (run-hooks 'org-drill-session-complete-hook)
 
     (if (and qualities
              (< pass-percent (- 100 org-drill-forgetting-index)))
