@@ -13,11 +13,17 @@
 # the text under the topic's main heading remains visible.
 
 *** Greeting 1                                       :drill:
+    :PROPERTIES:
+    :LANGUAGE: en
+    :END:
 
 Translate into Spanish:
 What is your name? (formal)
 
 **** Answer
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 ¿Cómo se llama usted?
 
@@ -26,11 +32,17 @@ What is your name? (formal)
 llamar = to be named
 
 *** Greeting 2                                       :drill:
+    :PROPERTIES:
+    :LANGUAGE: en
+    :END:
 
 Translate into Spanish:
 What is your name? (informal)
 
 **** Answer
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 ¿Cómo te llamas?
 
@@ -99,10 +111,16 @@ form of the adjective.
 Translate this word.
 
 **** Spanish
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 el gato
 
 **** English
+     :PROPERTIES:
+     :LANGUAGE: en
+     :END:
 
 the cat
 
@@ -132,10 +150,16 @@ Beware of *the dog*.
     :END:
 
 **** Spanish
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 la manzana
 
 **** English
+     :PROPERTIES:
+     :LANGUAGE: en
+     :END:
 
 the apple
 
@@ -154,10 +178,16 @@ The Spanish word for...
 Translate this word.
 
 **** Spanish
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 caliente
 
 **** English
+     :PROPERTIES:
+     :LANGUAGE: en
+     :END:
 
 hot
 
@@ -215,6 +245,7 @@ I danced with my girlfriend.
      :PROPERTIES:
      :VERB_TENSE: "simple present"
      :DRILL_CARD_TYPE: conjugate
+     :LANGUAGE: es
      :END:
 
 | yo            | bailo    |
@@ -232,6 +263,7 @@ Past participle of bailar:     [bailado]
      :PROPERTIES:
      :VERB_TENSE: "preterite"
      :DRILL_CARD_TYPE: conjugate
+     :LANGUAGE: es
      :END:
 
 | yo            | bailé      |
@@ -260,26 +292,41 @@ Past participle of bailar:     [bailado]
     :END:
 
 **** Infinitive
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 cantar
 
 **** English
+     :PROPERTIES:
+     :LANGUAGE: en
+     :END:
 
 to sing
 
 **** Present Tense
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 | yo canto  | nosotros cantamos |
 | tú cantas | vosotros cantáis  |
 | él canta  | ellos cantan      |
 
 **** Past Tense
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 | yo canté    | nosotros cantamos   |
 | tú cantaste | vosotros cantasteis |
 | él cantó    | ellos cantaron      |
 
 **** Future Perfect Tense
+     :PROPERTIES:
+     :LANGUAGE: es
+     :END:
 
 | yo cantaré  | nosotros cantaremos |
 | tú cantarás | vosotros cantaréis  |
@@ -331,5 +378,3 @@ En:  [The woman whose dog we’re seeking is my boss.]
 
 Sp:  [entre]
 En:  [between] or [among]
-
-
