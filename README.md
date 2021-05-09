@@ -1029,7 +1029,7 @@ Org-Drill was originally written by Paul Sexton.
 This version of org-drill is a fork of the original written by Paul.
 I (Phil Lord) made this fork as org-drill was unmaintained.
 
-https://bitbucket.org/eeeickythump/org-drill/issues/63/maintainership
+https://web.archive.org/web/20200622021215/https://bitbucket.org/eeeickythump/org-drill/issues/63/maintainership
 
 Paul did email me and tell me that he was happy with this, but I have
 subsequently been unable to get access to the original project; as
