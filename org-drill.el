@@ -2044,21 +2044,20 @@ RESCHEDULE-FN is the function to reschedule."
           ((oref session drill-answer)
            (org-drill-with-replaced-entry-text
             (format "\nAnswer:\n\n  %s\n" (oref session drill-answer))
-            (funcall reschedule-fn session)
-            ))
+            (funcall reschedule-fn session)))
           (t
            (org-drill-hide-subheadings-if 'org-drill-entry-p)
            (org-drill-unhide-clozed-text)
-           (org-drill--show-latex-fragments)
+           (when window-system (org-drill--show-latex-fragments))
            (ignore-errors
              (org-display-inline-images t))
            (org-cycle-hide-drawers 'all)
-           (org-remove-latex-fragment-image-overlays)
+           (when window-system (org-remove-latex-fragment-image-overlays))
            (save-excursion
              (org-mark-subtree)
              (let ((beg (region-beginning))
                    (end (region-end)))
-               (org--latex-preview-region beg end))
+               (when window-system (org--latex-preview-region beg end)))
              (deactivate-mark))
            (org-drill-with-hidden-cloze-hints
             (funcall reschedule-fn session))))))
