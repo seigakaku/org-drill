@@ -1104,10 +1104,10 @@ Returns a list: (INTERVAL REPEATS EF FAILURES MEAN TOTAL-REPEATS OFMATRIX), wher
   "Set the optimal factor."
   (let ((factors (assoc n of-matrix)))
     (if factors
-	(let ((ef-of (assoc ef (cdr factors))))
-	  (if ef-of
-	      (setcdr ef-of of)
-	    (push (cons ef of) (cdr factors))))
+        (let ((ef-of (assoc ef (cdr factors))))
+          (if ef-of
+              (setcdr ef-of of)
+            (push (cons ef of) (cdr factors))))
       (push (cons n (list (cons ef of))) of-matrix)))
   of-matrix)
 
@@ -1851,7 +1851,7 @@ visual overlay, or with the string TEXT if it is supplied."
       ;; - the contents of SRC blocks
       (unless (save-match-data
                 (or (org-drill-pos-in-regexp (match-beginning 0)
-                                       org-bracket-link-regexp 1)
+                                       org-link-bracket-re 1)
                     (org-in-src-block-p)
                     (org-inside-LaTeX-fragment-p)))
         (org-drill-hide-matched-cloze-text)))))
@@ -1894,7 +1894,7 @@ visual overlay, or with the string TEXT if it is supplied."
     (while (re-search-forward org-drill-cloze-regexp nil t)
       (unless (or (save-match-data
                     (org-drill-pos-in-regexp (match-beginning 0)
-                                       org-bracket-link-regexp 1))
+                                       org-link-bracket-re 1))
                   (null (match-beginning 2))) ; hint subexpression matched
         (org-drill-hide-region (match-beginning 2) (match-end 2))))))
 
@@ -2148,7 +2148,7 @@ items if FORCE-SHOW-FIRST or FORCE-SHOW-LAST is non-nil)."
         (while (re-search-forward org-drill-cloze-regexp item-end t)
           (let ((in-regexp? (save-match-data
                               (org-drill-pos-in-regexp (match-beginning 0)
-                                                 org-bracket-link-regexp 1))))
+                                                 org-link-bracket-re 1))))
             (unless (or in-regexp?
                         (org-inside-LaTeX-fragment-p))
               (cl-incf match-count)))))
@@ -2179,7 +2179,7 @@ items if FORCE-SHOW-FIRST or FORCE-SHOW-LAST is non-nil)."
             (while (re-search-forward org-drill-cloze-regexp item-end t)
               (unless (save-match-data
                         (or (org-drill-pos-in-regexp (match-beginning 0)
-                                               org-bracket-link-regexp 1)
+                                               org-link-bracket-re 1)
                             (org-inside-LaTeX-fragment-p)))
                 (cl-incf cnt)
                 (if (memq cnt match-nums)
@@ -2188,7 +2188,7 @@ items if FORCE-SHOW-FIRST or FORCE-SHOW-LAST is non-nil)."
       ;;  do (re-search-forward org-drill-cloze-regexp
       ;;                        item-end t pos-to-hide)
       ;;  while (org-drill-pos-in-regexp (match-beginning 0)
-      ;;                           org-bracket-link-regexp 1))
+      ;;                           org-link-bracket-re 1))
       ;; (org-drill-hide-matched-cloze-text)))))
       (org-drill--show-latex-fragments)
       (ignore-errors
@@ -2218,7 +2218,7 @@ the second to last, etc."
         (while (re-search-forward org-drill-cloze-regexp item-end t)
           (let ((in-regexp? (save-match-data
                               (org-drill-pos-in-regexp (match-beginning 0)
-                                                 org-bracket-link-regexp 1))))
+                                                 org-link-bracket-re 1))))
             (unless (or in-regexp?
                         (org-inside-LaTeX-fragment-p))
               (cl-incf match-count)))))
@@ -2238,7 +2238,7 @@ the second to last, etc."
                       ;; org link, or if it occurs inside a LaTeX math
                       ;; fragment
                       (or (org-drill-pos-in-regexp (match-beginning 0)
-                                             org-bracket-link-regexp 1)
+                                             org-link-bracket-re 1)
                           (org-inside-LaTeX-fragment-p)))
               (cl-incf cnt)
               (if (= cnt to-hide)
