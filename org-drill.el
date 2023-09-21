@@ -3035,6 +3035,7 @@ exiting them with the `edit' or `quit' options."
   (let ((session org-drill-last-session))
     (cond
      ((org-drill-entries-pending-p session)
+      (setf (oref session end-pos) nil) ;; We quit before, doesn't mean we want to quit now
       (org-drill nil nil t))
      ((and (cl-plusp (org-drill-pending-entry-count session))
            ;; Current drill session is finished, but there are still
