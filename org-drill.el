@@ -699,10 +699,25 @@ CMD is bound, or nil if it is not bound to a key."
   (let ((key (where-is-internal cmd overriding-local-map t)))
     (if key (key-description key))))
 
+(defun org-drill-coerce-timestring (timestring)
+  "Remove leading \"<\" and trailing \">\" from TIMESTRING.
+
+Versions of org-mode prior to 9.6 included leading \"<\" and
+trailing \">\" characters in `org-time-stamp-formats'. These have been
+removed since."
+  (if (and (let* ((v (mapcar 'string-to-number (split-string (org-release) "[.]")))
+                  (majorv (cl-first v))
+                  (minorv (cl-second v)))
+             (or (> majorv 9) (and (= majorv 9) (>= minorv 6))))
+           (char-equal (aref timestring 0) ?<)
+           (char-equal (aref timestring (- (length timestring) 1))))
+      (substring timestring 1 -1)
+    timestring))
+
 (defun org-drill-time-to-inactive-org-timestamp (time)
   "Convert TIME into org-mode timestamp."
   (format-time-string
-   (concat "[" (substring (cdr org-time-stamp-formats) 1 -1) "]")
+   (concat "[" (org-drill-coerce-timestring (cdr org-time-stamp-formats)) "]")
    time))
 
 (defun org-drill-map-entries (func &optional scope drill-match &rest skip)
@@ -765,6 +780,11 @@ Returns scope as defined by `org-map-entries'"
            ,@body)
        (org-drill-unhide-text))))
 
+(defun org-drill-parse-time-string (timestring)
+  "Parses TIMESTRING using `org-drill-coerce-timestring' and
+`org-parse-time-string'."
+  (org-parse-time-string (org-drill-coerce-timestring timestring)))
+
 (defun org-drill-days-since-last-review ()
   "Nil means a last review date has not yet been stored for
 the item.
@@ -776,7 +796,7 @@ this should never happen."
     (when datestr
       (- (time-to-days (current-time))
          (time-to-days (apply 'encode-time
-                              (org-parse-time-string datestr)))))))
+                              (org-drill-parse-time-string datestr)))))))
 
 (defun org-drill-hours-since-last-review ()
   "Like `org-drill-days-since-last-review', but return value is
@@ -786,7 +806,7 @@ in hours rather than days."
       (floor
        (/ (- (time-to-seconds (current-time))
              (time-to-seconds (apply 'encode-time
-                                     (org-parse-time-string datestr))))
+                                     (org-drill-parse-time-string datestr))))
           (* 60 60))))))
 
 (defun org-drill-entry-p (&optional marker)
